@@ -1,0 +1,56 @@
+{
+  "name": "react-liquid-glass-card",
+  "version": "0.0.0",
+  "description": "a tiny react component, giving you a liquid glass card (CSS only!) to use in your projects.",
+  "license": "MIT",
+  "author": {
+    "name": "Kevin Schmidt",
+    "email": "kevin@kswebentwicklug.de"
+  },
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "component",
+    "apple",
+    "glassmorphism",
+    "liquid",
+    "glass",
+    "card",
+    "frosted",
+    "ui",
+    "design",
+    "css",
+    "liquidglass"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "styled-components": ">=6"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.12",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "styled-components": "6.1.19",
+    "tsup": "8.5.0",
+    "typescript": "5.6.2"
+  }
+}
