@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 export type LiquidGlassCardProps = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
