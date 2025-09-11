@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 
 export type LiquidGlassCardProps = {
   children: React.ReactNode;
@@ -18,32 +17,36 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
   blur,
   backgroundColor,
 }) => {
-  const StyledDiv = styled.div`
-    background-color: ${backgroundColor ?? "none"};
-    width: 100%;
-    padding: ${padding ?? "1rem 1.5rem"};
-    transition: opacity 0.26s ease-out;
-    border-radius: ${borderRadius ?? "1rem"};
-    filter: drop-shadow(-8px -10px 46px #0000005f);
-    backdrop-filter: brightness(${brightness ?? 1.03}) blur(${blur ?? 4}px)
-      url(#displacementFilter);
-    &:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      border-radius: ${borderRadius ?? "1rem"};
-      -webkit-box-shadow: inset 2px 2px 0px -2px rgba(175, 125, 125, 0.7),
-        inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
-      box-shadow: inset 6px 6px 0px -6px rgba(255, 255, 255, 0.7),
-        inset 0 0 8px 1px rgba(255, 255, 255, 0.7);
-    }
-  `;
+  const mainElementStyle: React.CSSProperties = {
+    position: "relative",
+    backgroundColor: backgroundColor ?? "none",
+    width: "100%",
+    padding: padding ?? "1rem 1.5rem",
+    transition: "opacity 0.26s ease-out",
+    borderRadius: borderRadius ?? "1rem",
+    filter: "drop-shadow(-8px -10px 46px #0000005f)",
+    backdropFilter: `brightness(${brightness ?? 1.03}) blur(${blur ?? 4}px)
+      url(#displacementFilter)`,
+  };
+
+  const innerElementStyle: React.CSSProperties = {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    inset: 0,
+    zIndex: 0,
+    overflow: "hidden",
+    borderRadius: borderRadius ?? "1rem",
+    boxShadow:
+      "inset 6px 6px 0px -6px rgba(255, 255, 255, 0.7), inset 0 0 8px 1px rgba(255, 255, 255, 0.7)",
+  };
 
   return (
     <>
-      <StyledDiv>{children}</StyledDiv>
+      <div style={mainElementStyle}>
+        <div style={innerElementStyle} />
+        {children}
+      </div>
       <svg style={{ display: "none" }}>
         <filter id="displacementFilter">
           <feImage
