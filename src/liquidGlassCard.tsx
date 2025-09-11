@@ -3,25 +3,37 @@ import styled from "styled-components";
 
 export type LiquidGlassCardProps = {
   children: React.ReactNode;
+  padding?: React.CSSProperties["padding"];
+  borderRadius?: React.CSSProperties["borderRadius"];
+  brightness?: number;
+  blur?: number;
+  backgroundColor?: React.CSSProperties["backgroundColor"];
 };
 
 export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
   children,
+  padding,
+  borderRadius,
+  brightness,
+  blur,
+  backgroundColor,
 }) => {
   const StyledDiv = styled.div`
+    background-color: ${backgroundColor ?? "none"};
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: ${padding ?? "1rem 1.5rem"};
     transition: opacity 0.26s ease-out;
-    border-radius: 1rem;
+    border-radius: ${borderRadius ?? "1rem"};
     filter: drop-shadow(-8px -10px 46px #0000005f);
-    backdrop-filter: brightness(1.03) blur(4px) url(#displacementFilter);
+    backdrop-filter: brightness(${brightness ?? 1.03}) blur(${blur ?? 4}px)
+      url(#displacementFilter);
     &:before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 0;
       overflow: hidden;
-      border-radius: 1rem;
+      border-radius: ${borderRadius ?? "1rem"};
       -webkit-box-shadow: inset 2px 2px 0px -2px rgba(175, 125, 125, 0.7),
         inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
       box-shadow: inset 6px 6px 0px -6px rgba(255, 255, 255, 0.7),
