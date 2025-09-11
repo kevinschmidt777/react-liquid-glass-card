@@ -1,6 +1,6 @@
 {
   "name": "react-liquid-glass-card",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a tiny react component, giving you a liquid glass card (CSS only!) to use in your projects.",
   "license": "MIT",
   "author": {
@@ -42,14 +42,12 @@
   ],
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18",
-    "styled-components": ">=6"
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "@types/react": "19.1.12",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "styled-components": "6.1.19",
     "tsup": "8.5.0",
     "typescript": "5.6.2"
   }
