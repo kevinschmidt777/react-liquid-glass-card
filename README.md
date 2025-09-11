@@ -1,5 +1,7 @@
 # Liquid Glass Card (CSS only)
 
+![Example image](example.jpg)
+
 A liquid glass effect card built using only CSS by the power of svg filters.
 Simple and easy to use, minimal code weight and type safe.
 
