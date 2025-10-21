@@ -1,6 +1,6 @@
 # Liquid Glass Card (CSS only)
 
-![Example image](example.jpg)
+![Example image](https://exile92.de/1/react-liquid-glass-card.jpg)
 
 A liquid glass effect card built using only CSS by the power of svg filters.
 Simple and easy to use, minimal code weight and type safe.
