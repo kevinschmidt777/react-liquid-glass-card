@@ -5,6 +5,8 @@
 A liquid glass effect card built using only CSS by the power of svg filters.
 Simple and easy to use, minimal code weight and type safe.
 
+If the browser does not support svg filters, it will gracefully degrade to a simple card with a default blurry background color.
+
 ## How to use
 
 1. Install the npm package
