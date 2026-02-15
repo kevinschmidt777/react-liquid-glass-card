@@ -17,10 +17,8 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
   blur = 4,
   backgroundColor,
 }) => {
-  const canHandleSvgFilters =
-    typeof window !== "undefined" &&
-    window.CSS &&
-    window.CSS.supports("filter", "url(#displacementFilter)");
+  const bgDropFilter = `brightness(${brightness}) blur(${blur}px)
+      url(#displacementFilter)`;
 
   const mainElementStyle: React.CSSProperties = {
     position: "relative",
@@ -30,8 +28,8 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
     transition: "opacity 0.26s ease-out",
     borderRadius: borderRadius,
     filter: "drop-shadow(-8px -10px 46px #0000005f)",
-    backdropFilter: `brightness(${brightness}) blur(${blur}px)
-      url(#displacementFilter)`,
+    WebkitBackdropFilter: bgDropFilter,
+    backdropFilter: bgDropFilter,
   };
 
   const innerElementStyle: React.CSSProperties = {
@@ -46,15 +44,7 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
       "inset 6px 6px 0px -6px rgba(255, 255, 255, 0.7), inset 0 0 8px 1px rgba(255, 255, 255, 0.7)",
   };
 
-  // Used, if a browser does not support svg filters.
-  const fallbackElementStyle: React.CSSProperties = {
-    padding: padding,
-    borderRadius: borderRadius,
-    backgroundColor: backgroundColor ?? "rgba(255, 255, 255, 0.7)",
-    backdropFilter: `blur(${blur}px)`,
-  };
-
-  return canHandleSvgFilters ? (
+  return (
     <>
       <div style={mainElementStyle}>
         <div style={innerElementStyle} />
@@ -76,7 +66,5 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
         </filter>
       </svg>
     </>
-  ) : (
-    <div style={fallbackElementStyle}>{children}</div>
   );
 };
