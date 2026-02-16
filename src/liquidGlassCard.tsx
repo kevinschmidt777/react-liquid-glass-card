@@ -14,20 +14,24 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
   children,
   padding = "1rem 1.5rem",
   borderRadius = "1rem",
-  brightness = 1.03,
   blur = 4,
   backgroundColor = "rgba(255, 255, 255, 0.7)",
   boxShadow = "0 4px 30px rgba(0, 0, 0, 0.1)",
+  brightness = 1.2,
 }) => {
-  const bgDropFilter = `brightness(${brightness}) blur(${blur}px)
-      url(#displacementFilter)`;
+  const bgDropFilter = `url(#displacementFilter) brightness(${brightness})`;
 
-  const mainElementStyle: React.CSSProperties = {
+  const wrapperStyle: React.CSSProperties = {
     position: "relative",
     width: "100%",
-    padding: padding,
-    backgroundColor: backgroundColor,
-    transition: "opacity 0.26s ease-out",
+    height: "100%",
+  };
+
+  const mainElementStyle: React.CSSProperties = {
+    boxSizing: "border-box",
+    position: "absolute",
+    width: "100%",
+    height: "100%",
     borderRadius: borderRadius,
     boxShadow: boxShadow,
     WebkitBackdropFilter: bgDropFilter,
@@ -39,17 +43,39 @@ export const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
     width: "100%",
     height: "100%",
     inset: 0,
-    zIndex: 0,
+    zIndex: -1,
     overflow: "hidden",
     borderRadius: borderRadius,
+    backgroundColor: backgroundColor,
     boxShadow: `inset 6px 6px 0px -6px ${backgroundColor}, inset 0 0 8px 1px ${backgroundColor}`,
+  };
+
+  const blurryBgStyle: React.CSSProperties = {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    zIndex: 0,
+    borderRadius: borderRadius,
+    overflow: "hidden",
+    backdropFilter: `blur(${blur}px)`,
+  };
+
+  const contentStyle: React.CSSProperties = {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    zIndex: 1,
+    padding: padding,
   };
 
   return (
     <>
-      <div style={mainElementStyle}>
-        <div style={innerElementStyle} />
-        {children}
+      <div style={wrapperStyle}>
+        <div style={blurryBgStyle} />
+        <div style={mainElementStyle}>
+          <div style={innerElementStyle} />
+        </div>
+        <div style={contentStyle}>{children}</div>
       </div>
       <svg style={{ display: "none" }}>
         <filter id="displacementFilter">
